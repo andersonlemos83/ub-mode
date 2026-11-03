@@ -1,14 +1,14 @@
 ---
 name: ub-mode
 description: >
-  Follow the reduced principles when writing or changing code. Every change
-  follows First Make it Work, then Then Make it Right, then Follow Practice.
-  Use when the user runs /ub-mode or asks for the reduced principles.
+  Apply ub-mode engineering practices when writing or changing code, including
+  behavior-focused tests, design heuristics, and available quality gates. Use
+  when requested as ub-mode or for its reduced engineering principles.
 ---
 
 # ub-mode
 
-Every time you are asked to make a change follow:
+When this skill is invoked for a code change, follow these stages within the user’s requested scope and the project’s conventions:
 * First Make it Work.
 * Then Make it Right.
 * Follow Practice
@@ -41,7 +41,7 @@ Every time you are asked to make a change follow:
 ## Attack the Premise
 
 * When two fixes that share one premise fail the same gate, write that premise in one sentence and count which actors hold the imbalance.
-* Remove the assignment.
+* Reconsider the assignment of responsibilities that created the imbalance.
 * Do not start another fix until you have done that.
 
 ## Subtract Before You Add
@@ -55,7 +55,7 @@ Every time you are asked to make a change follow:
 
 ## Build the Lever
 
-* If the work is not obvious at a glance, build the tool that does it.
+* When repeated or error-prone work warrants automation, consider building a tool that does it.
 * Do one unit by hand, then make the tool match that unit.
 
 ## Architecture
@@ -105,22 +105,40 @@ Every time you are asked to make a change follow:
 * The test calls the code the way its user does and checks the result that user would see.
 * If the test would still pass when every function returned nothing, throw it out.
 
-## Crapper
+## Harness
+
+* Run applicable gates from the project root at suitable checkpoints and before you call the work done. Setup and exact commands: `references/harness-install.md`.
+* When a gate fails, follow `references/reaction-protocols.md`.
+* If a tool is unavailable, say so, continue without that gate, and report it as not run. Never claim a gate passed when it did not run.
+
+### Crapper
 
 * Use the crapper tool
 * Reduce each function under  CRAP 10 by splitting it, by testing it, or both.
+* At full coverage CRAP equals cyclomatic complexity, so a function with CC of 10 or more must be split; tests alone cannot fix it.
 * Consider whether case statements are worth reducing.
 
-## Dryer
+### Dryer
 
 * Use the dryer tool to eliminate duplication that rank 0.8 or above.
 
-## Mutator
+### Mutator
 
 * Use the mutator tool
 * Cover the uncovered.
 * Kill the survivors.
 * Delete dead code.
+
+### UML Viewer (optional)
+
+* Use uml-viewer when someone wants to review dependency direction. It is a viewer, not a gate.
+
+## Heuristics
+
+* `heuristics/clean-code.md`: names, functions, classes, tests and the book's smell catalog (Clean Code, 2008).
+* `heuristics/clean-architecture.md`: policy vs detail, the Dependency Rule, component principles and boundaries (Clean Architecture, 2017).
+* `heuristics/goos-atdd.md`: outside-in ATDD/TDD, walking skeleton, mocking roles and listening to the tests (Growing Object-Oriented Software, Guided by Tests, 2009).
+* Read the relevant file before a non-trivial review or refactoring. Local project conventions win unless they create a concrete risk.
 
 ## Refactoring
 
@@ -142,11 +160,10 @@ Every time you are asked to make a change follow:
 
 ## Worktree Cleanup
 
-* Find what is safe to remove, confirm nothing still in use needs it, then reclaim the disk.
+* When cleanup is part of the task, find what is safe to remove and confirm nothing still in use needs it before reclaiming disk.
 * Uncommitted work waits for a decision.
 
 ## Commit and Push
 
-* Commit often, in small ordered commits.
-* Each commit says why, what changed, and how you proved it.
-* Push to the main line at the end.
+* When commits are requested or authorized, use small ordered commits that say why, what changed, and how it was proved.
+* Push only when requested or otherwise authorized, following the project’s branch and review workflow.
