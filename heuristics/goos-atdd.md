@@ -1,8 +1,17 @@
-# GOOS: ATDD and Outside-In TDD
+# GOOS: Test Design and Acceptance Tests
 
 Source: Steve Freeman and Nat Pryce, *Growing Object-Oriented Software, Guided by Tests* (2009).
 
 Use this as thinking pressure for test-driven design, not as a framework guide. Adapt the ideas to the codebase in front of you and keep its testing conventions and libraries. Do not import vocabulary from other testing schools as if it came from GOOS.
+
+## Where GOOS Fits in ub-mode
+
+The TDD rules in `SKILL.md` are the loop for every change. Use this file for what they do not cover, and do not let it grow a small change:
+
+- **Always:** test doubles (Unit Tests and Collaboration), Listening to the Tests, and Readable, Diagnostic Tests.
+- **When a change adds behavior a user or an external system can observe:** start with a failing acceptance test (The Loop, Acceptance Tests). A bug fix or an internal change starts with the unit test from `SKILL.md`.
+- **Only when you start a new system or cross a new architectural boundary:** build a walking skeleton.
+- **Interaction checks only when the collaboration is the behavior.** Otherwise assert the outcome. A test that only checks that something was called lets mutants survive in the values that matter.
 
 ## The Loop
 

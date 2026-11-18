@@ -13,7 +13,7 @@ SKILL.md                         # the skill: three acts, harness, heuristics in
 heuristics/
   clean-code.md                  # Clean Code (2008): smell catalog C/E/F/G/N/T, Simple Design, SRP
   clean-architecture.md          # Clean Architecture (2017): Dependency Rule, components, boundaries
-  goos-atdd.md                   # GOOS (2009): outside-in ATDD/TDD, walking skeleton, listening to tests
+  goos-atdd.md                   # GOOS (2009): test doubles, listening to tests, acceptance tests
 references/
   harness-install.md            # requirements and commands for the tools, OS-agnostic
   reaction-protocols.md         # what to do when a gate fails, linked to the heuristics
