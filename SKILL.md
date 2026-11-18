@@ -41,7 +41,7 @@ When this skill is invoked for a code change, follow these stages within the use
 ## Attack the Premise
 
 * When two fixes that share one premise fail the same gate, write that premise in one sentence and count which actors hold the imbalance.
-* Reconsider the assignment of responsibilities that created the imbalance.
+* Remove the assignment that creates the imbalance: move that responsibility to the actor that should hold it.
 * Do not start another fix until you have done that.
 
 ## Subtract Before You Add
