@@ -2,8 +2,8 @@
 
 `ub-mode` is an agent skill that enforces disciplined software engineering principles when writing or changing code. It is loosely based on portions of [@poteto](https://github.com/poteto)'s rules (`poteto-mode` / `pstack`), reduced and paired with deterministic quality-gate tools:
 
-1. **First Make It Work** — Laziness Protocol, Foundational Thinking, TDD, Redesign From First Principles, Attack the Premise, Subtract Before You Add, Outcome-Oriented Execution, Build the Lever, and Architecture (Model the Domain, Boundary Discipline, Type System Discipline, Make Operations Idempotent, Separate Before Serializing Shared State).
-2. **Then Make It Right** — Fix Root Causes, Sequence Work into Verifiable Units, Test Behavior (Not Implementation), the Harness (Crapper (`CRAP < 10`), Dryer (duplication `< 0.8`), Mutator (cover the uncovered, kill the survivors, delete dead code)), the Heuristics, and Refactoring.
+1. **First Make it Work** — Laziness Protocol, Foundational Thinking, TDD, Redesign From First Principles, Attack the Premise, Subtract Before You Add, Outcome-Oriented Execution, Build the Lever, and Architecture (Model the Domain, Boundary Discipline, Type System Discipline, Make Operations Idempotent, Separate Before Serializing Shared State).
+2. **Then Make it Right** — Fix Root Causes, Sequence Work into Verifiable Units, Test Behavior (Not Implementation), the Harness (Crapper (`CRAP < 10`), Dryer (duplication `< 0.8`), Mutator (cover the uncovered, kill the survivors, delete dead code)), the Heuristics, and Refactoring.
 3. **Practice** — Keep a Log, Guard the Context Window, Worktree Cleanup when needed, and small ordered commits when authorized.
 
 ## Layout
@@ -59,8 +59,8 @@ If a tool is missing, the agent installs it under `~/.ub-mode/tools/`, outside y
 
 > /ub-mode Add a tiered discount to the checkout total.
 
-1. **First Make It Work.** The agent writes a failing test in domain terms, for example “a gold customer gets 10% off orders above 100”. It watches the test fail for the expected reason, then makes the smallest change that passes.
-2. **Then Make It Right.** From the project root it runs the gates:
+1. **First Make it Work.** The agent writes a failing test in domain terms, for example “a gold customer gets 10% off orders above 100”. It watches the test fail for the expected reason, then makes the smallest change that passes.
+2. **Then Make it Right.** From the project root it runs the gates:
 
    ```sh
    crapper --threshold 9.99
