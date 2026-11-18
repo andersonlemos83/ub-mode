@@ -167,5 +167,6 @@ When this skill is invoked for a code change, follow these stages within the use
 
 ## Commit and Push
 
-* When commits are requested or authorized, use small ordered commits that say why, what changed, and how it was proved.
-* Push only when requested or otherwise authorized, following the project’s branch and review workflow.
+* Commit often, in small ordered commits, unless told not to commit.
+* Each commit says why, what changed, and how you proved it.
+* Push only when authorized, following the project’s branch and review workflow.
