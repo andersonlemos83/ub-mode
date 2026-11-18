@@ -160,7 +160,9 @@ When this skill is invoked for a code change, follow these stages within the use
 
 ## Worktree Cleanup
 
-* When cleanup is part of the task, find what is safe to remove and confirm nothing still in use needs it before reclaiming disk.
+* Find what is safe to remove, confirm nothing still in use needs it, then reclaim the disk.
+* Before you finish, remove what you created: scratch files, worktrees, venvs, tool clones, downloaded attachments.
+* Never install tools inside the target repo.
 * Uncommitted work waits for a decision.
 
 ## Commit and Push
