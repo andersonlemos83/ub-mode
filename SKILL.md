@@ -135,10 +135,10 @@ When this skill is invoked for a code change, follow these stages within the use
 
 ## Heuristics
 
-* `heuristics/clean-code.md`: names, functions, classes, tests and the book's smell catalog (Clean Code, 2008).
-* `heuristics/clean-architecture.md`: policy vs detail, the Dependency Rule, component principles and boundaries (Clean Architecture, 2017).
-* `heuristics/goos-atdd.md`: outside-in ATDD/TDD, walking skeleton, mocking roles and listening to the tests (Growing Object-Oriented Software, Guided by Tests, 2009).
-* Read the relevant file before a non-trivial review or refactoring. Local project conventions win unless they create a concrete risk.
+* `heuristics/clean-code.md`: names, functions, classes, tests and the book's smell catalog (Clean Code, 2008). Read it when crapper or dryer fails, and before you refactor.
+* `heuristics/clean-architecture.md`: policy vs detail, the Dependency Rule, component principles and boundaries (Clean Architecture, 2017). Read it when a change adds a module, or a dependency that crosses a layer or component boundary.
+* `heuristics/goos-atdd.md`: test doubles, listening to the tests, and acceptance tests (Growing Object-Oriented Software, Guided by Tests, 2009). Read it when a test is hard to write, when you need a test double, or when a change adds behavior a user can observe.
+* Local project conventions win unless they create a concrete risk.
 
 ## Refactoring
 
