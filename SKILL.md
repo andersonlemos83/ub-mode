@@ -117,6 +117,7 @@ When this skill is invoked for a code change, follow these stages within the use
 * Reduce each function under  CRAP 10 by splitting it, by testing it, or both.
 * At full coverage CRAP equals cyclomatic complexity, so a function with CC of 10 or more must be split; tests alone cannot fix it.
 * Consider whether case statements are worth reducing.
+* If you keep a function at CRAP 10 or above, report the gate as failed with a justified exception: name the function and the reason. Never report it as passed.
 
 ### Dryer
 

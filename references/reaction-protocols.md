@@ -25,7 +25,7 @@ No amount of testing can bring this function under 10. It must be split.
 - Look for G30 (does more than one thing) and G34 (descends more than one level of abstraction). Extract functions whose names reveal intent (G20).
 - Encapsulate conditionals and boundary conditions (G28, G33). Replace repeated type switches with polymorphism (G23, the “one switch” rule).
 - If the branching is a business decision that lives in a controller, handler or adapter, move it into a use case or entity. See Entities, Use Cases, Boundary Data in `clean-architecture.md`.
-- **Case statements:** a flat dispatch `case` / `switch` adds one to CC per branch but is often the clearest form. Before splitting it, ask whether it is the single allowed switch (G23). If you keep it, state why in the log.
+- **Case statements:** a flat dispatch `case` / `switch` adds one to CC per branch but is often the clearest form. Before splitting it, ask whether it is the single allowed switch (G23). If you keep it, report the crapper gate as failed with a justified exception, naming the function and the reason. Do not report the gate as passed.
 
 ### CC < 10: test it, split it, or both
 
