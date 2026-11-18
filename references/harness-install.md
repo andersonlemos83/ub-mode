@@ -1,15 +1,14 @@
 # Harness Install
 
-ub-mode uses four tools by Robert C. Martin. This guide states what each one needs and where its authoritative instructions live. It does not give OS-specific commands. Install the prerequisites with whatever your platform provides (package manager, official installer, version manager), and follow each tool's README when it differs from this summary.
+ub-mode uses three tools by Robert C. Martin as gates. This guide states what each one needs and where its authoritative instructions live. It does not give OS-specific commands. Install the prerequisites with whatever your platform provides (package manager, official installer, version manager), and follow each tool's README when it differs from this summary.
 
 | Tool | Repository | Role in ub-mode |
 | --- | --- | --- |
 | crapper | https://github.com/unclebob/crapper | Gate: CRAP per function |
 | dryer | https://github.com/unclebob/dryer | Gate: structural duplication |
 | mutator | https://github.com/unclebob/mutator | Gate: mutation testing |
-| uml-viewer | https://github.com/unclebob/uml-viewer | Optional: interactive architecture review |
 
-All four analyze Clojure, Java, Go, TypeScript, Rust and Python sources. uml-viewer's project launcher targets Clojure projects.
+All three analyze Clojure, Java, Go, TypeScript, Rust and Python sources. In any other language the gates cannot run: report them as not run and apply the heuristics by hand.
 
 ## Requirements
 
@@ -17,7 +16,6 @@ All four analyze Clojure, Java, Go, TypeScript, Rust and Python sources. uml-vie
 - **Python ≥ 3.11** (the `requires-python` in each `pyproject.toml`), available as `python3`. You can run crapper, dryer and mutator directly through the launcher script in each repo: the first run creates a local `.venv` inside the tool's own directory and installs the tool there.
 - **mutator needs crapper checked out as a sibling directory** (`../crapper`), because it takes namespace and function names from crapper. Clone both under the same parent directory.
 - **The target project's own test and coverage tooling.** crapper and mutator run the project's tests to measure coverage. Each language has its own default coverage command: see the “Coverage commands” table in crapper's README. Override it with `--coverage-command`.
-- **uml-viewer only:** the Clojure CLI and Java 21 or newer. Use the `clojure` command, or `clj` if rlwrap is installed. The project launcher also uses tmux and starts an interactive Grok companion session. See the uml-viewer README.
 
 ## Install
 
@@ -43,16 +41,6 @@ Notes:
 - mutator runs are differential once a snapshot exists. `--mutate-all` reruns everything.
 - crapper installs missing coverage tooling into the project's environment, for example `coverage` and `pytest` for Python or `cargo-llvm-cov` for Rust. That is expected; record it in the log.
 - Add `.metrics/` to the project's ignore file unless the team wants the snapshots versioned.
-
-## uml-viewer (Optional Review Tool)
-
-uml-viewer is an interactive GUI. It lays out a UML diagram and overlays crapper and mutator results from `.metrics/`. It is not a pass/fail gate.
-
-- It marks an arrow red (a Dependency Rule violation) only when the project's policy declares `:levels`, which group namespace segments from inner to outer. Without `:levels`, nothing is marked.
-- To view a real project, use the repo's `get-uml-viewer` script from the project root. It clones the viewer into a gitignored `.uml-viewer/` directory and writes a `./uml` launcher. That launcher starts a tmux session running a Grok companion.
-- Inside the uml-viewer repo, `clojure -M:run <file.edn>` only opens example diagrams.
-
-Use it when a human wants to review dependency direction. Do not report “zero red arrows” as a gate result unless `:levels` is configured and you actually looked at the diagram.
 
 ## Install Policy
 

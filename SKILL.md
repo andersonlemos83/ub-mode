@@ -132,10 +132,6 @@ When this skill is invoked for a code change, follow these stages within the use
 * Kill the survivors.
 * Delete dead code.
 
-### UML Viewer (optional)
-
-* Use uml-viewer when someone wants to review dependency direction. It is a viewer, not a gate.
-
 ## Heuristics
 
 * `heuristics/clean-code.md`: names, functions, classes, tests and the book's smell catalog (Clean Code, 2008). Read it when crapper or dryer fails, and before you refactor.
