@@ -55,7 +55,7 @@ When this skill is invoked for a code change, follow these stages within the use
 
 ## Build the Lever
 
-* When repeated or error-prone work warrants automation, consider building a tool that does it.
+* If the work is not obvious at a glance, build the tool that does it.
 * Do one unit by hand, then make the tool match that unit.
 
 ## Architecture
