@@ -49,11 +49,11 @@ Then invoke `/ub-mode`.
 
 Follow [references/harness-install.md](references/harness-install.md). In short:
 
-- Clone `crapper`, `dryer`, and `mutator` side by side; mutator expects crapper at `../crapper`.
+- Clone `crapper`, `dryer`, and `mutator` side by side under `~/.ub-mode/tools/`; mutator expects crapper at `../crapper`.
 - They need Python 3.11+ and bootstrap their own `.venv` on first run. Verify with `crapper/crapper --help` and so on.
 - `uml-viewer` is optional and needs the Clojure CLI and Java 21+.
 
-The agent adapts the prerequisite installation to your OS. If a tool is missing, the skill tells the agent to say so and report that gate as not run rather than claim it passed.
+If a tool is missing, the agent installs it under `~/.ub-mode/tools/`, outside your project. It asks once before installing a system toolchain such as Python. If installation fails, it reports that gate as not run rather than claim it passed.
 
 ## Usage Example
 

@@ -109,7 +109,9 @@ When this skill is invoked for a code change, follow these stages within the use
 
 * Run applicable gates from the project root at suitable checkpoints and before you call the work done. Setup and exact commands: `references/harness-install.md`.
 * When a gate fails, follow `references/reaction-protocols.md`.
-* If a tool is unavailable, say so, continue without that gate, and report it as not run. Never claim a gate passed when it did not run.
+* The gates are part of the process. If crapper, dryer or mutator is missing, install it under `~/.ub-mode/tools/` as `references/harness-install.md` describes. Never install tools inside the target repo.
+* Ask once before installing a system toolchain such as Python.
+* If installation fails, say why, continue without that gate, and report it as not run. Never claim a gate passed when it did not run.
 
 ### Crapper
 

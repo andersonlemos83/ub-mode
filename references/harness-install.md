@@ -21,9 +21,10 @@ All four analyze Clojure, Java, Go, TypeScript, Rust and Python sources. uml-vie
 
 ## Install
 
-1. Pick one parent directory for the tools and clone `crapper`, `dryer` and `mutator` into it, side by side. Add `uml-viewer` only if you want it.
+1. Use `~/.ub-mode/tools/` as the parent directory, outside any project. Clone `crapper`, `dryer` and `mutator` into it, side by side. If they are already there, run `git pull` in each instead of cloning again.
 2. Run each launcher once with `--help` (`crapper/crapper --help`, and so on). The first run bootstraps the `.venv`; afterwards `--help` should print usage.
-3. Optionally put the launchers on your `PATH` or alias them. The launchers resolve their own location, so you can call them from any directory.
+3. If a launcher script does not run on your platform (for example on Windows without a POSIX shell), create one venv at `~/.ub-mode/tools/venv` and run `pip install -e <tool>` for each tool. The commands then live in that venv's scripts folder.
+4. Put the launchers on your `PATH`, or call them by full path, for example `~/.ub-mode/tools/crapper/crapper`. The launchers resolve their own location, so you can call them from any directory.
 
 ## Running Against a Project
 
@@ -40,6 +41,7 @@ Notes:
 - crapper exits 2 only when the worst score is higher than `--threshold`, which is why ub-mode's “CRAP < 10” rule uses `9.99`. Without `--threshold`, crapper never fails; read the table. Verify scores against the strict `< 10` rule and the precision reported by the installed version: a `9.99` threshold is not mathematically identical to `< 10` for scores between 9.99 and 10.
 - If a coverage tool is missing, or the project's tests fail, crapper scores that language at 0% coverage and still writes the snapshot. Check the run output before you trust the numbers. A wall of 0% usually means the coverage step broke, not that nothing is tested.
 - mutator runs are differential once a snapshot exists. `--mutate-all` reruns everything.
+- crapper installs missing coverage tooling into the project's environment, for example `coverage` and `pytest` for Python or `cargo-llvm-cov` for Rust. That is expected; record it in the log.
 - Add `.metrics/` to the project's ignore file unless the team wants the snapshots versioned.
 
 ## uml-viewer (Optional Review Tool)
@@ -52,11 +54,11 @@ uml-viewer is an interactive GUI. It lays out a UML diagram and overlays crapper
 
 Use it when a human wants to review dependency direction. Do not report “zero red arrows” as a gate result unless `:levels` is configured and you actually looked at the diagram.
 
-## If the Tools Are Unavailable
+## Install Policy
 
-Do not install toolchains silently or pipe remote scripts into a shell. If a tool or its prerequisites are missing:
+The gates are part of ub-mode, so installing what is missing is part of the work:
 
-1. Say which tool is missing and why (no Python 3.11, no crapper sibling for mutator, no coverage tooling, and so on).
-2. Offer the install steps above, and ask before installing anything system-wide.
-3. If the user declines or installation fails, continue without that gate. Apply the matching heuristics by hand: CC by inspection, duplication by reading, and boundary and mutation thinking from `goos-atdd.md`.
-4. Report the gate as not run. Never claim it passed.
+1. **crapper, dryer and mutator:** install them without asking, as described above, under `~/.ub-mode/tools/`. Never install them inside the target repo.
+2. **Coverage tooling that crapper adds to the project:** allowed. Record it in the log.
+3. **System toolchains** (Python 3.11 or newer): ask once before installing. Use the platform's package manager or official installer. Never pipe remote scripts into a shell.
+4. **If installation fails or the user declines:** say which tool is missing and why, continue without that gate, and apply the matching heuristics by hand: CC by inspection, duplication by reading, and boundary and mutation thinking from `goos-atdd.md`. Report the gate as not run. Never claim it passed.
