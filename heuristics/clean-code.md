@@ -4,11 +4,9 @@ Source: Robert C. Martin, *Clean Code: A Handbook of Agile Software Craftsmanshi
 
 Use these heuristics as evidence, not verdicts. Map every smell to concrete code, say which future change it makes harder, and propose the smallest fix. Local repository conventions win unless they create a concrete maintainability risk. Do not carry forward dated tool, IDE, or language-version advice from the book; keep the principle behind it.
 
-## Attribution Rule
+## Attribution
 
-The smell codes below (C, E, F, G, N, T, plus the Java-specific J) are the catalog of Chapter 17, “Smells and Heuristics”. The chapter opens by crediting Martin Fowler's *Refactoring* and says the list “includes many of Martin's smells and adds many more of my own”. Only G14 Feature Envy is explicitly attributed to Fowler, so it alone is marked (Fowler) below. Cite every other entry by its Clean Code code and name.
-
-Smells that exist only in *Refactoring* are not in this catalog. If you raise one, attribute it to Fowler explicitly. Prefer the closest book heuristic when one exists:
+The codes below (C, E, F, G, N, T, and the Java-specific J) are the Chapter 17 catalog. Only G14 Feature Envy is credited to Martin Fowler's *Refactoring*, so only it is marked (Fowler). A smell that exists only in *Refactoring* is Fowler's: name it as his, and prefer the closest code here:
 
 | Fowler smell (not in Clean Code's catalog) | Closest Clean Code heuristic |
 | --- | --- |
@@ -181,7 +179,3 @@ This is a review ordering distilled from the case studies in Chapters 14–16 (S
 10. Collapse needless indirection once the design is clear.
 
 Take small steps and run the tests after each one. Never break the system to restructure it.
-
-## Review Output
-
-For each finding, give severity and location, the smell code and name, why it matters (change cost, testability, correctness), and the smallest practical fix. Ground every point in the code at hand; do not lecture.

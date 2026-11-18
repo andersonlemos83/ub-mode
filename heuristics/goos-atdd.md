@@ -118,7 +118,3 @@ So whether verifying a log call is right depends on which kind of log it is.
 8. Are setup, action and assertion readable enough to explain intent?
 9. Will the failure diagnostics help the next developer fix the problem?
 10. Does the suite balance fast design feedback with integrated confidence?
-
-## Output
-
-Give the outside-in slice or walking skeleton to start with, the acceptance behavior to express first, the responsibilities likely to emerge, the test smells or design risks you observed, and the next smallest safe step. Separate conceptual advice from repository-specific implementation details.

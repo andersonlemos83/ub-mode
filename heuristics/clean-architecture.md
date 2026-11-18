@@ -122,7 +122,3 @@ The Humble Object pattern splits behavior that is hard to test (UI, framework ca
 10. Are tests coupled to volatile details instead of stable behavior?
 11. Would a new UI, database, delivery path or provider force changes to core policy?
 12. Does a proposed abstraction protect a real option, or only add ceremony?
-
-## Review Output
-
-For each finding, give severity and location, the principle or boundary violated, why it matters (change, testability, deployment, protection of policy), the smallest reversible fix and a verification checkpoint. For redesigns, give the current map, the target dependency direction, the migration steps that keep the system runnable, and the remaining trade-offs.
